@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+
+:root {
+    /*--primary: #00bdd6;
+    --primary-dark: #00b0c7;
+    --secondary: #fe9143;
+    --secondary-dark: #fe8834;*/
+    --white: #ffffff;
+    /*--white2: #ebf3f5;
+    --gray: #e1e4e5;
+    --gray2: #c0c6c9;
+    --gray3: #4b4c4d;    
+    --black2: #2a2b2b;*/
+    --black: #0e1111;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'PT Mono', monospace;
+    font-weight: 400;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--black);
+    color: var(--white);
+}
+
+header {    
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/img/jqwoiuasc.jpg');
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+    /*height: 50vh;*/    
+}
+
+/*header > nav {
+    position: sticky;
+}*/
+
+.img-circle {
+    border-radius: 50%;
+    width: 40vw;
+    height: auto;
+    max-width: 250px;
+}
+
+header div hr {
+    background-image: linear-gradient(to right,transparent,var(--white),transparent);
+    max-width: 50vw;
+    background-color: initial;
+}
+
+.title-section {
+    background-color: var(--black);
+}
+
+.title-section::after {
+    content: "";
+    display: inline-block;
+    width: 30vw;
+    max-width: 300px;
+    height: 1px;
+    margin-left: 20px;
+    background-color: var(--white);
+    vertical-align: middle;
+}
+
+.card-text-fix {
+    height: 100px;
+    font-size: 0.8em;
+}
+
+.card-footer {
+    /*padding: .5rem 1rem;*/
+    background-color: initial;
+    Border-top: 0px solid rgba(0,0,0,.125);
+}
+
+.card-footer div > a > svg {
+    width: 20px;
+    color: #6c757d;
+} 
+
+input[type=text], input[type=password], input[type=email], textarea.form-control, .form-control:focus {
+    background-color: var(--black);
+    border: none;
+    border-bottom: 1px solid var(--white);
+    color: var(--white);
+    box-shadow: none;
+}
+
+.form-control:focus {
+    transition: all .3s ease;
+    padding: 15px 0 0 0;
+}
+
+.icon-footer {
+    color: var(--white);
+    font-size: 2em;
+}
+
+.icon-footer:hover {
+    transition: all .3s ease;
+    transform: scale(1.1) translateY(-5px);
+}
+
+.icon-text-footer {
+    display: none;
+}
+
+@media screen and (min-width: 767px) {
+    .icon-text-footer {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    header {
+        height: 60vh;  
+    }
+
+    .icon-text-footer {
+        display: inline-block;
+    }
+}
