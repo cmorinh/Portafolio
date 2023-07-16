@@ -1,10 +1,6 @@
 <?php 
-    include_once('include/conexion.php');
-
-    $connection = new conexion();
-    $projects = $connection->consultar("select * from proyectos");
+    require_once('include/config.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,16 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css"> 
     <script src="https://kit.fontawesome.com/ded7749dbd.js" crossorigin="anonymous"></script>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">     
 </head>
     <body>
-        <header class="container-fluid text-center text-white">
+        <header class="container-fluid text-center text-white header-img">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid d-flex justify-content-end">
                     <div class="collapse navbar-collapse justify-content-end" id="navbarToggler">
-                        <a class="btn btn-outline-light me-2" href="index.php">Home</a>
+                        <a class="btn btn-outline-light me-2" href="index.php">Inicio</a>
                         <a class="btn btn-outline-light me-2" href="#portfolio">Portafolio</a>
                         <a class="btn btn-outline-light" href="#contact">Contacto</a>
                     </div>
@@ -55,149 +51,7 @@
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                <?php foreach($projects as $project) { ?>
-                    <div class="col">
-                        <div class="card border-dark">
-                            <img src="assets/img/<?php echo $project['IMAGE'] ?>" class="card-img-top" alt="...">
-                            <div class="card-body text-dark">
-                                <h5 class="card-title"><?php echo $project['NAME'] ?></h5>
-                                <p class="card-text card-text-fix"><?php echo $project["DESCRIPTION"] ?></p>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between">
-                                <div>
-                                    <small class="text-muted"><?php echo $project["SKILLS"] ?></small>                        
-                                </div>
-                                <div>
-                                    <a class="text-decoration-none" href="<?php echo $project["GIT"] ?>">
-                                        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
-                                            <title>GitHub</title>
-                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                        </svg>
-                                    </a>
-                                    <a class="text-decoration-none" href="<?php echo $project["WEB"] ?>">
-                                        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
-                                            <title>Web</title>
-                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
-                                        </svg>
-                                    </a>
-                                </div>                        
-                            </div>
-                        </div>                    
-                    </div>                        
-                <?php }; ?>
-                <!--
-                    <div class="col">
-                        <div class="card border-dark">
-                            <img src="assets/img/jqwoiuasc.jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-dark">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between">
-                                <div>
-                                    <small class="text-muted">HTML CSS JAVASCRIPT BOOTSTRAP</small>                        
-                                </div>
-                                <div>
-                                    <a class="text-decoration-none" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
-                                            <title>GitHub</title>
-                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                        </svg>
-                                    </a>
-                                    <a class="text-decoration-none" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
-                                            <title>Web</title>
-                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
-                                        </svg>
-                                    </a>
-                                </div>                        
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-dark">
-                            <img src="assets/img/jqwoiuasc.jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-dark">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between">
-                                <div>
-                                    <small class="text-muted">HTML CSS JAVASCRIPT BOOTSTRAP</small>                        
-                                </div>
-                                <div>
-                                    <a class="text-decoration-none" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
-                                            <title>GitHub</title>
-                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                        </svg>
-                                    </a>
-                                    <a class="text-decoration-none" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
-                                            <title>Web</title>
-                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
-                                        </svg>
-                                    </a>
-                                </div>                        
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-dark">
-                            <img src="assets/img/jqwoiuasc.jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-dark">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between">
-                                <div>
-                                    <small class="text-muted">HTML CSS JAVASCRIPT BOOTSTRAP</small>                        
-                                </div>
-                                <div>
-                                    <a class="text-decoration-none" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
-                                            <title>GitHub</title>
-                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                        </svg>
-                                    </a>
-                                    <a class="text-decoration-none" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
-                                            <title>Web</title>
-                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
-                                        </svg>
-                                    </a>
-                                </div>                        
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col border-dark">
-                        <div class="card">
-                            <img src="assets/img/jqwoiuasc.jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-dark">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between">
-                                <div>
-                                    <small class="text-muted">HTML CSS JAVASCRIPT BOOTSTRAP</small>                        
-                                </div>
-                                <div>
-                                    <a class="text-decoration-none" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
-                                            <title>GitHub</title>
-                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                        </svg>
-                                    </a>
-                                    <a class="text-decoration-none" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
-                                            <title>Web</title>
-                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
-                                        </svg>
-                                    </a>
-                                </div>                        
-                            </div>
-                        </div>
-                    </div>-->
+                <?php require_once('./partials/projects.php'); ?>
             </div>
         </section>
         <section id="contact" class="container-md">
@@ -246,7 +100,7 @@
                           <input type="text" class="form-control" id="name" maxlength="40">
                         </div>
                         <div class="col-12 mt-2">
-                          <label for="email" class="form-label">Email</label>
+                          <label for="email" class="form-label">Correo</label>
                           <input type="email" class="form-control" id="email" maxlength="300">
                         </div>
                         <div class="col-12 mt-2">
@@ -265,5 +119,6 @@
             </div>
         </section>
         <?php include('partials/footer.php'); ?> 
+        <script src="./js/bootstrap.bundle.min.js"></script>   
     </body>
 </html>

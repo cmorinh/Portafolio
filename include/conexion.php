@@ -1,10 +1,10 @@
 <?php class conexion{
     #atributos que son propios del objeto
-    private $servidor ="127.0.0.1:3306";
-    private $usuario ="root";
-    private $pass = "";
+    private $servidor ="localhost";
+    private $usuario = "root";  //"id21007077_portafolio";
+    private $pass = ""; //"S@nt1@g02015";
     private $conexion;#objeto de tipo pdo, de la clase propia de php
-    private $base = "portafolio";
+    private $base = "portafolio"; //"id21007077_portafolio";
    
     public function __construct(){
         // cargar las variables de entorno

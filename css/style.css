@@ -1,16 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
 
 :root {
-    /*--primary: #00bdd6;
-    --primary-dark: #00b0c7;
-    --secondary: #fe9143;
-    --secondary-dark: #fe8834;*/
     --white: #ffffff;
-    /*--white2: #ebf3f5;
-    --gray: #e1e4e5;
-    --gray2: #c0c6c9;
-    --gray3: #4b4c4d;    
-    --black2: #2a2b2b;*/
     --black: #0e1111;
 }
 
@@ -29,17 +20,36 @@ body {
     color: var(--white);
 }
 
-header {    
+/* ---------------- GLOBAL ----------------------- */
+
+input.form-control, textarea.form-control, .form-control:focus {
+    background-color: var(--black);
+    border: none;
+    border-bottom: 1px solid var(--white);
+    color: var(--white);
+    box-shadow: none;
+}
+
+.form-control:focus {
+    transition: all .3s ease;
+    padding: 15px 0 0 0;
+}
+
+.loading {
+    width: 3rem;
+    height: calc(100vh * 100);
+    z-index: 9999;
+    padding-top: 50vh;
+}
+
+/* ---------------- INDEX, ADMIN ----------------------- */
+
+.header-img {    
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/img/jqwoiuasc.jpg');
     background-size: cover;
     background-position-x: center;
     background-position-y: center;
-    /*height: 50vh;*/    
 }
-
-/*header > nav {
-    position: sticky;
-}*/
 
 .img-circle {
     border-radius: 50%;
@@ -75,7 +85,6 @@ header div hr {
 }
 
 .card-footer {
-    /*padding: .5rem 1rem;*/
     background-color: initial;
     Border-top: 0px solid rgba(0,0,0,.125);
 }
@@ -84,19 +93,6 @@ header div hr {
     width: 20px;
     color: #6c757d;
 } 
-
-input[type=text], input[type=password], input[type=email], textarea.form-control, .form-control:focus {
-    background-color: var(--black);
-    border: none;
-    border-bottom: 1px solid var(--white);
-    color: var(--white);
-    box-shadow: none;
-}
-
-.form-control:focus {
-    transition: all .3s ease;
-    padding: 15px 0 0 0;
-}
 
 .icon-footer {
     color: var(--white);
@@ -112,6 +108,41 @@ input[type=text], input[type=password], input[type=email], textarea.form-control
     display: none;
 }
 
+/* ---------------- EDIT ----------------------- */
+
+/* (A) SET CSS TRANSITION */
+.new-project {    
+    transition: display 5s ease-in-out 1s;
+    display: none;
+}
+ 
+/* (B) SHOW */
+.new-project.show  {
+    display: flex;
+}
+
+.th-project-table, .td-project-table {
+    vertical-align: middle;
+}
+
+/*
+.td-project-table > p {
+    width: 200px;
+    text-align: center;
+}*/
+
+.td-project-table > img {
+    padding: .25rem;
+    border-radius: 1rem;
+    max-width: 200px;
+    height: auto;
+}
+
+.td-project-table > i {    
+    padding: 1rem;
+    cursor: pointer;
+}
+
 @media screen and (min-width: 767px) {
     .icon-text-footer {
         display: none;
@@ -119,7 +150,7 @@ input[type=text], input[type=password], input[type=email], textarea.form-control
 }
 
 @media screen and (min-width: 992px) {
-    header {
+    .header-img {
         height: 60vh;  
     }
 
